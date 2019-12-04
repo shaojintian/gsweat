@@ -10,22 +10,22 @@ ProjectName and Description
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-<a title="Build Status" target="_blank" href="https://travis-ci.com/panjf2000/gnet"><img src="https://img.shields.io/travis/com/panjf2000/gnet?style=flat-square&logo=appveyor"></a>
-<a title="Codecov" target="_blank" href="https://codecov.io/gh/panjf2000/gnet"><img src="https://img.shields.io/codecov/c/github/panjf2000/gnet?style=flat-square&logo=appveyor"></a>
-<a title="Supported Platforms" target="_blank" href="https://github.com/panjf2000/gnet"><img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-549688?style=flat-square&logo=appveyor"></a>
-<a title="Require Go Version" target="_blank" href="https://github.com/panjf2000/gnet"><img src="https://img.shields.io/badge/go-%3E%3D1.9-30dff3?style=flat-square&logo=appveyor"></a>
-<a title="Release" target="_blank" href="https://github.com/panjf2000/gnet/releases"><img src="https://img.shields.io/github/release/panjf2000/gnet.svg?color=161823&style=flat-square&logo=appveyor"></a>
+<a title="Build Status" target="_blank" href="https://travis-ci.com/shaojintian/gsweat"><img src="https://img.shields.io/travis/com/shaojintian/gsweat?style=flat-square&logo=appveyor"></a>
+<a title="Codecov" target="_blank" href="https://codecov.io/gh/shaojintian/gsweat"><img src="https://img.shields.io/codecov/c/github/shaojintian/gsweat?style=flat-square&logo=appveyor"></a>
+<a title="Supported Platforms" target="_blank" href="https://github.com/shaojintian/gsweat"><img src="https://img.shields.io/badge/platform-Linux%20%7C%20macOS%20%7C%20Windows-549688?style=flat-square&logo=appveyor"></a>
+<a title="Require Go Version" target="_blank" href="https://github.com/shaojintian/gsweat"><img src="https://img.shields.io/badge/go-%3E%3D1.9-30dff3?style=flat-square&logo=appveyor"></a>
+<a title="Release" target="_blank" href="https://github.com/shaojintian/gsweat/releases"><img src="https://img.shields.io/github/release/shaojintian/gsweat.svg?color=161823&style=flat-square&logo=appveyor"></a>
 <br/>
-<a title="" target="_blank" href="https://golangci.com/r/github.com/panjf2000/gnet"><img src="https://golangci.com/badges/github.com/panjf2000/gnet.svg"></a>
-<a title="Doc for gnet" target="_blank" href="https://gowalker.org/github.com/panjf2000/gnet?lang=zh-CN"><img src="https://img.shields.io/badge/api-reference-8d4bbb.svg?style=flat-square&logo=appveyor"></a>
-<a title="gnet on Sourcegraph" target="_blank" href="https://sourcegraph.com/github.com/panjf2000/gnet?badge"><img src="https://sourcegraph.com/github.com/panjf2000/gnet/-/badge.svg?style=flat-square"></a>
-<a title="Mentioned in Awesome Go" target="_blank" href="https://github.com/avelino/awesome-go#networking"><img src="https://awesome.re/mentioned-badge-flat.svg"></a>
+<a title="" target="_blank" href="https://golangci.com/r/github.com/shaojintian/gsweat"><img src="https://golangci.com/badges/github.com/shaojintian/gsweat.svg"></a>
+<a title="Doc for gnet" target="_blank" href="https://gowalker.org/github.com/shaojintian/gsweat?lang=zh-CN"><img src="https://img.shields.io/badge/api-reference-8d4bbb.svg?style=flat-square&logo=appveyor"></a>
+<a title="gnet on Sourcegraph" target="_blank" href="https://sourcegraph.com/github.com/shaojintian/gsweat?badge"><img src="https://sourcegraph.com/github.com/shaojintian/gsweat/-/badge.svg?style=flat-square"></a>
+
 
 <!-- PROJECT LOGO -->
 <br />
 
 <p align="center">
-  <a href="https://github.com/shaojintian/Best_README_template/">
+  <a href="https://github.com/shaojintian/gsweat/">
     <img src="docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -33,14 +33,14 @@ ProjectName and Description
   <p align="center">
     An awesome README template to jumpstart your projects!
     <br />
-    <a href="https://github.com/shaojintian/Best_README_template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/shaojintian/gsweat"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/shaojintian/Best_README_template"> View Demo</a>
+    <a href="https://github.com/shaojintian/gsweat"> View Demo</a>
     ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">Report Bug</a>
+    <a href="https://github.com/shaojintian/gsweat/issues">Report Bug</a>
     ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">Request Feature</a>
+    <a href="https://github.com/shaojintian/gsweat/issues">Request Feature</a>
   </p>
 
 </p>
@@ -49,22 +49,22 @@ ProjectName and Description
 
 # 🚀 功能
 
-- [x] [高性能](#-性能测试) 的基于多线程/Go程网络模型的 event-loop 事件驱动
-- [x] 内置 Round-Robin 轮询负载均衡算法
-- [x] 内置 goroutine 池，由开源库 [ants](https://github.com/panjf2000/ants) 提供支持
-- [x] 内置 bytes 内存池，由开源库 [pool](https://github.com/gobwas/pool/) 提供支持
-- [x] 简洁的 APIs
-- [x] 基于 Ring-Buffer 的高效内存利用
-- [x] 支持多种网络协议：TCP、UDP、Unix Sockets
-- [x] 支持两种事件驱动机制：Linux 里的 epoll 以及 FreeBSD 里的 kqueue
-- [x] 支持异步写操作
-- [x] 灵活的事件定时器
-- [x] SO_REUSEPORT 端口重用
-- [x] 内置多种编解码器，支持对 TCP 数据流分包：LineBasedFrameCodec, DelimiterBasedFrameCodec, FixedLengthFrameCodec 和 LengthFieldBasedFrameCodec，参考自 [netty codec](https://github.com/netty/netty/tree/netty-4.1.43.Final/codec/src/main/java/io/netty/handler/codec)，而且支持自定制编解码器
-- [x] 支持 Windows 平台，基于 ~~IOCP 事件驱动机制~~ Go 标准网络库
-- [ ] 加入更多的负载均衡算法：随机、最少连接、一致性哈希等等
-- [ ] 支持 TLS
-- [ ] 实现 `gnet` 客户端
+- [x] xxxxxx
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [x] 
+- [ ] 
+- [ ] 
+- [ ] 
 
 
 
@@ -93,7 +93,7 @@ ProjectName and Description
 
 ### 上手指南
 
-请将所有链接中的“shaojintian/Best_README_template”改为“your_github_name/your_repository”
+请将所有链接中的“shaojintian/gsweat”改为“your_github_name/your_repository”
 
 
 
@@ -108,7 +108,7 @@ ProjectName and Description
 2. Clone the repo
 
 ```sh
-git clone https://github.com/shaojintian/Best_README_template.git
+git clone https://github.com/shaojintian/gsweat.git
 ```
 
 ### 文件目录说明
@@ -141,7 +141,7 @@ filetree
 
 ### 开发的架构 
 
-请阅读[ARCHITECTURE.md](https://github.com/shaojintian/Best_README_template/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
+请阅读[ARCHITECTURE.md](https://github.com/shaojintian/gsweat/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
 
 ### 部署
 
@@ -196,7 +196,7 @@ E-mail: sjt@hnu.edu.cn
 
 ### 版权说明
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt)
+该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/shaojintian/gsweat/blob/master/LICENSE.txt)
 
 ### 鸣谢
 
@@ -217,16 +217,16 @@ If you like this project and want to sponsor the author, you can reward the auth
 </figure>
 <!-- links -->
 
-[your-project-path]: shaojintian/Best_README_template
-[contributors-shield]: https://img.shields.io/github/contributors/shaojintian/Best_README_template.svg?style=flat-square
-[contributors-url]: https://github.com/shaojintian/Best_README_template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/shaojintian/Best_README_template.svg?style=flat-square
-[forks-url]: https://github.com/shaojintian/Best_README_template/network/members
-[stars-shield]: https://img.shields.io/github/stars/shaojintian/Best_README_template.svg?style=flat-square
-[stars-url]: https://github.com/shaojintian/Best_README_template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg
-[license-shield]: https://img.shields.io/github/license/shaojintian/Best_README_template.svg?style=flat-square
-[license-url]: https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt
+[your-project-path]: shaojintian/gsweat
+[contributors-shield]: https://img.shields.io/github/contributors/shaojintian/gsweat.svg?style=flat-square
+[contributors-url]: https://github.com/shaojintian/gsweat/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/shaojintian/gsweat.svg?style=flat-square
+[forks-url]: https://github.com/shaojintian/gsweat/network/members
+[stars-shield]: https://img.shields.io/github/stars/shaojintian/gsweat.svg?style=flat-square
+[stars-url]: https://github.com/shaojintian/gsweat/stargazers
+[issues-shield]: https://img.shields.io/github/issues/shaojintian/gsweat.svg?style=flat-square
+[issues-url]: https://img.shields.io/github/issues/shaojintian/gsweat.svg
+[license-shield]: https://img.shields.io/github/license/shaojintian/gsweat.svg?style=flat-square
+[license-url]: https://github.com/shaojintian/gsweat/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/shaojintian
