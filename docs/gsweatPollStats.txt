@@ -1,0 +1,30 @@
+=== RUN   TestGSweatPool
+fatal error: all goroutines are asleep - deadlock!
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc0000c4100, 0x113df6e, 0xe, 0x11454f0, 0x106a346)
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:917 +0x381
+testing.runTests.func1(0xc0000c4000)
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:1157 +0x78
+testing.tRunner(0xc0000c4000, 0xc0000a1e30)
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:865 +0xc0
+testing.runTests(0xc00000c060, 0x1232900, 0x2, 0x2, 0x0)
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:1155 +0x2a9
+testing.(*M).Run(0xc0000ac000, 0x0)
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:1072 +0x162
+main.main()
+	_testmain.go:44 +0x13e
+
+goroutine 4 [semacquire]:
+sync.runtime_Semacquire(0xc00001a198)
+	/usr/local/Cellar/go/1.12.5/libexec/src/runtime/sema.go:56 +0x39
+sync.(*WaitGroup).Wait(0xc00001a190)
+	/usr/local/Cellar/go/1.12.5/libexec/src/sync/waitgroup.go:130 +0x65
+github.com/shaojintian/gsweat/core.TestGSweatPool(0xc0000c4100)
+	/Users/shaojintian/vscode/gsweat/core/gsweat_test.go:20 +0xbd
+testing.tRunner(0xc0000c4100, 0x11454f0)
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:865 +0xc0
+created by testing.(*T).Run
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:916 +0x35a
+exit status 2
+FAIL	github.com/shaojintian/gsweat/core	0.409s

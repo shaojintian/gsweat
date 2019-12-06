@@ -4,6 +4,7 @@ import (
 	"errors"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
 type Pool struct {
@@ -67,7 +68,7 @@ func (p *Pool) PublishNewJob(f func()) error {
 	if worker := p.wksPool.Get().(*Worker); worker != nil {
 		ok := atomic.CompareAndSwapUint32(&worker.Status,Resting,Working)
 		if !ok {return ErrConvertWokerStatus}
-		//work
+		//worker work
 		worker.Job <- f
 		worker.DoJob()
 	}else{
@@ -83,6 +84,7 @@ func (p *Pool) ReUseWorker(worker *Worker) error{
 	//status change
 	p.m.Lock()
 	defer p.m.Unlock()
+	worker.reInPoolTime = time.Now()
 	if ok := atomic.CompareAndSwapUint32(&worker.Status,Working,Resting);!ok{
 		return ErrConvertWokerStatus
 	}

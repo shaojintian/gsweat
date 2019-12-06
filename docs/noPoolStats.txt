@@ -1,0 +1,6 @@
+=== RUN   TestNoPool
+--- PASS: TestNoPool (1.64s)
+    gsweat_test.go:49: no pool concurrency count : 1000000 (1百万)
+    gsweat_test.go:50: no pool used memory : 511 MiB
+PASS
+ok  	github.com/shaojintian/gsweat/core	1.883s

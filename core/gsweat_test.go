@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	n = 100000   // 10万
+	n = 1000000   // 100万
 	MiB = 1048576
 )
 func TestGSweatPool(t *testing.T) {
@@ -21,6 +21,8 @@ func TestGSweatPool(t *testing.T) {
 
 	mem:= runtime.MemStats{}
 	runtime.ReadMemStats(&mem)
+
+	t.Logf("gsweat pool concurrency count : %d (1百万)",n)
 	t.Logf("gsweat pool used memory : %d MiB",mem.TotalAlloc/MiB)
 	t.Logf("gsweat pool running workers: %d ",gsweat.GetWkingNum())
 	//t.Logf("gsweat pool resting wks : %d MiB",mem.TotalAlloc/MiB)
@@ -32,6 +34,7 @@ func TestGSweatPool(t *testing.T) {
 }
 
 func TestNoPool(t *testing.T) {
+	// go test -v -test.run TestNoPool > ../docs/noPoolStats.txt
 	var wg sync.WaitGroup
 	wg.Add(n)
 	for i := 0; i < n; i++{
@@ -44,7 +47,8 @@ func TestNoPool(t *testing.T) {
 
 	mem:= runtime.MemStats{}
 	runtime.ReadMemStats(&mem)
-	t.Logf("no pool used memory : %d MiB",mem.TotalAlloc/MiB)
+	t.Logf("no pool concurrency count : %d (1百万)",n)
+	t.Logf("no pool used memory : %d MiB",mem.TotalAlloc/MiB )
 
 
 }
