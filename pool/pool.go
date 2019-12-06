@@ -2,7 +2,6 @@ package pool
 
 import (
 	"errors"
-	"log"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -45,7 +44,7 @@ func NewPool(size int64, extraFuncs ...extraFunc) (*Pool, error) {
 		return nil, ErrInvalidPoolSize
 	}
 	// extra functions
-	var extra *Extra
+	extra := &Extra{}
 	for _, extraFunc := range extraFuncs {
 		extraFunc(extra)
 	}
@@ -70,7 +69,7 @@ func NewPool(size int64, extraFuncs ...extraFunc) (*Pool, error) {
 
 	//async to dynamically adjust workers number
 	//
-	//go p.dynamicallyAdjustWorkers()
+	go p.dynamicallyAdjustWorkers(p.extra.expireTime)
 	//
 
 	return p,nil
@@ -83,13 +82,15 @@ func (p *Pool) PublishNewJob(f func()) error {
 		return ErrPoolClosed
 	}
 
-	log.Println("================startPublishNewJob================")
+	//log.Println("================startPublishNewJob================")
 	// get Resting worker
 	worker, err := p.GetRestingWorker()
 	if worker != nil {
-		log.Printf("[number %s]worker works ", worker.reInPoolTime)
+		//log.Printf("[number %s]worker works ", worker.reInPoolTime)
+		go func() {
+			worker.Job <- f
+		}()
 		worker.DoJob()
-		//worker.Job <- f
 	}
 
 	return err
@@ -141,6 +142,30 @@ func (p *Pool) ClosePool() error {
 	return nil
 }
 
-func (p *Pool)dynamicallyAdjustWorkers(){
+func (p *Pool)dynamicallyAdjustWorkers(expireDuration time.Duration){
+	ticker := time.NewTicker(expireDuration)
+	defer ticker.Stop()
+	for {
+		select{
+			case <-ticker.C:
+				p.m.Lock()
+				expiredWorkers:= p.wks.GetExpiredWorkers(expireDuration)
+				p.m.Unlock()
+				for _, worker := range expiredWorkers{
+					worker.Job <- nil
+				}
 
+		}
+	}
+}
+
+func (wSched *WorkerScheduler) GetExpiredWorkers(expireDuration time.Duration)wksList{
+	var expiredWorkers wksList
+	expireTime := time.Now().Add(-expireDuration)
+	for _,worker := range wSched.wks{
+		if worker.reInPoolTime.After(expireTime){
+			expiredWorkers = append(expiredWorkers, worker)
+		}
+	}
+	return expiredWorkers
 }

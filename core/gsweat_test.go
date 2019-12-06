@@ -8,14 +8,14 @@ import (
 )
 
 const (
-	n = 1000000   // 100万
+	n = 1000000 // 100万
 	m = 1
 	MiB = 1048576
 )
 func TestGSweatPool(t *testing.T) {
 	var wg sync.WaitGroup
-	wg.Add(10)
-	for i := 0; i < 10; i++{
+	wg.Add(n)
+	for i := 0; i < n; i++{
 		err := gsweat.PublishNewJob(demoFunction)
 		if err != nil {t.Logf("PublishNewJob error: %v", err)}
 		wg.Done()

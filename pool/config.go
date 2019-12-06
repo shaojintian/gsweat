@@ -31,13 +31,13 @@ type Extra struct{
 
 }
 
-func withNewExtra(e *Extra) extraFunc{
+func WithNewExtra(e *Extra) extraFunc{
 	return func(extra *Extra){
 		extra = e
 	}
 }
 
-func withExpireTime(t time.Duration) extraFunc{
+func WithExpireTime(t time.Duration) extraFunc{
 	return func(extra *Extra){
 		extra.expireTime = t
 	}

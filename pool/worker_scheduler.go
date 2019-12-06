@@ -23,19 +23,19 @@ func NewWorkerSched(size int) *WorkerSched {
 	}
 }
 
-func (ws *WorkerScheduler) isEmpty() bool {
-	if len(ws.wks) == 0 {
+func (wSched *WorkerScheduler) isEmpty() bool {
+	if len(wSched.wks) == 0 {
 		return true
 	}
 	return false
 }
-func (ws *WorkerScheduler) len() int {
-	return len(ws.wks)
+func (wSched *WorkerScheduler) len() int {
+	return len(wSched.wks)
 }
-func (ws *WorkerScheduler) add(wk *Worker) {
-	ws.wks = append(ws.wks, wk)
+func (wSched *WorkerScheduler) add(wk *Worker) {
+	wSched.wks = append(wSched.wks, wk)
 }
-func (ws *WorkerScheduler) optimize() int {
+func (wSched *WorkerScheduler) optimize() int {
 
-	return ws.len()
+	return wSched.len()
 }
