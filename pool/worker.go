@@ -32,7 +32,10 @@ func (w *Worker) DoJob() {
 func (w *Worker)doJob() {
 	w.pool.AddWkingNum()
 
-	if f,ok := <-w.Job;ok{
+	for f:= range w.Job{
+		if f == nil {
+			return
+		}
 		f()
 		w.pool.DecreWkingNum()
 		err := w.pool.ReUseWorker(w)

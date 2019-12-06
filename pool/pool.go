@@ -61,7 +61,7 @@ func NewPool(size int64, extraFuncs ...extraFunc) (*Pool, error) {
 		New: func() interface{} {
 			return &Worker{
 				pool:p,
-				Job: nil,
+				Job:nil,
 				reInPoolTime:time.Now(),
 				Status:Resting,
 			}
@@ -88,16 +88,16 @@ func (p *Pool) PublishNewJob(f func()) error {
 	worker, err := p.GetRestingWorker()
 	if worker != nil {
 		log.Printf("[number %s]worker works ", worker.reInPoolTime)
-		worker.Job <- f
 		worker.DoJob()
+		//worker.Job <- f
 	}
 
 	return err
 }
 
 func (p *Pool) GetRestingWorker() (*Worker, error) {
-	p.m.Lock()
-	defer p.m.Unlock()
+	//p.m.Lock()
+	//defer p.m.Unlock()
 	if worker := p.wksPool.Get().(*Worker); worker != nil {
 		return worker,nil
 	}
@@ -111,8 +111,8 @@ func (p *Pool) ReUseWorker(worker *Worker) error {
 		return ErrPoolClosed
 	}
 	//status change
-	p.m.Lock()
-	defer p.m.Unlock()
+	//p.m.Lock()
+	//defer p.m.Unlock()
 	worker.reInPoolTime = time.Now()
 
 	p.wksPool.Put(worker)
