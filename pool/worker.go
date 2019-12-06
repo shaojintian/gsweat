@@ -14,7 +14,7 @@ type Worker struct {
 	Job chan func()
 
 	//time when use and  reuse in the pool
-	enterPool time.Time
+	reInPoolTime time.Time
 
 	//status : work(1) or rest(0)
 	Status uint32
@@ -22,7 +22,7 @@ type Worker struct {
 
 }
 
-type WorkerList []*Worker
+
 
 func (w *Worker) DoJob() {
 	go w.doJob()

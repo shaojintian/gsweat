@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	PoolCLosed uint32 = 0
+	PoolCLosed uint32 = iota
 	PoolOpening
 	Resting
 	Working
@@ -15,9 +15,9 @@ const (
 
 var (
 	//errs
-	ErrPoolClosed = errors.New("pool closed")
+	ErrPoolClosed = errors.New("goroutine pool closed")
 	ErrInvalidPoolSize = errors.New("pool size is invalid")
-	ErrConvertWokerStatus = errors.New("convert woker status rest to worker error")
+	ErrConvertWorkerStatus = errors.New("convert woker status rest to worker error")
 
 	//
 )

@@ -1,30 +1,39 @@
 === RUN   TestGSweatPool
-fatal error: all goroutines are asleep - deadlock!
+fatal error: unexpected signal during runtime execution
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x8 pc=0x105fa1b]
+
+goroutine 18 [running]:
+runtime.throw(0x1143e50, 0x2a)
+	/usr/local/Cellar/go/1.12.5/libexec/src/runtime/panic.go:617 +0x72 fp=0xc0000ba7c0 sp=0xc0000ba790 pc=0x102aa72
+runtime.sigpanic()
+	/usr/local/Cellar/go/1.12.5/libexec/src/runtime/signal_unix.go:374 +0x4a9 fp=0xc0000ba7f0 sp=0xc0000ba7c0 pc=0x103e1f9
+sync.(*Pool).pin(0x0, 0xc0000ba848)
+	/usr/local/Cellar/go/1.12.5/libexec/src/sync/pool.go:186 +0x2b fp=0xc0000ba810 sp=0xc0000ba7f0 pc=0x105fa1b
+sync.(*Pool).Get(0x0, 0x1145d20, 0xc0000880f0)
+	/usr/local/Cellar/go/1.12.5/libexec/src/sync/pool.go:128 +0x2f fp=0xc0000ba858 sp=0xc0000ba810 pc=0x105f77f
+github.com/shaojintian/gsweat/pool.(*Pool).PublishNewJob(0xc0000880c0, 0x1145740, 0x0, 0x0)
+	/Users/shaojintian/vscode/gsweat/pool/pool.go:69 +0x87 fp=0xc0000ba8b8 sp=0xc0000ba858 pc=0x10f2b07
+github.com/shaojintian/gsweat/core.TestGSweatPool(0xc0000e2100)
+	/Users/shaojintian/vscode/gsweat/core/gsweat_test.go:19 +0xc9 fp=0xc0000bbfa8 sp=0xc0000ba8b8 pc=0x10f32d9
+testing.tRunner(0xc0000e2100, 0x1145728)
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:865 +0xc0 fp=0xc0000bbfd0 sp=0xc0000bbfa8 pc=0x10b64b0
+runtime.goexit()
+	/usr/local/Cellar/go/1.12.5/libexec/src/runtime/asm_amd64.s:1337 +0x1 fp=0xc0000bbfd8 sp=0xc0000bbfd0 pc=0x1057131
+created by testing.(*T).Run
+	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:916 +0x35a
 
 goroutine 1 [chan receive]:
-testing.(*T).Run(0xc0000c4100, 0x113df6e, 0xe, 0x11454f0, 0x106a346)
+testing.(*T).Run(0xc0000e2100, 0x113e163, 0xe, 0x1145728, 0x106a346)
 	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:917 +0x381
-testing.runTests.func1(0xc0000c4000)
+testing.runTests.func1(0xc0000e2000)
 	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:1157 +0x78
-testing.tRunner(0xc0000c4000, 0xc0000a1e30)
+testing.tRunner(0xc0000e2000, 0xc0000b9e30)
 	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:865 +0xc0
-testing.runTests(0xc00000c060, 0x1232900, 0x2, 0x2, 0x0)
+testing.runTests(0xc00009c020, 0x1232900, 0x2, 0x2, 0x0)
 	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:1155 +0x2a9
-testing.(*M).Run(0xc0000ac000, 0x0)
+testing.(*M).Run(0xc0000c6000, 0x0)
 	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:1072 +0x162
 main.main()
 	_testmain.go:44 +0x13e
-
-goroutine 4 [semacquire]:
-sync.runtime_Semacquire(0xc00001a198)
-	/usr/local/Cellar/go/1.12.5/libexec/src/runtime/sema.go:56 +0x39
-sync.(*WaitGroup).Wait(0xc00001a190)
-	/usr/local/Cellar/go/1.12.5/libexec/src/sync/waitgroup.go:130 +0x65
-github.com/shaojintian/gsweat/core.TestGSweatPool(0xc0000c4100)
-	/Users/shaojintian/vscode/gsweat/core/gsweat_test.go:20 +0xbd
-testing.tRunner(0xc0000c4100, 0x11454f0)
-	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:865 +0xc0
-created by testing.(*T).Run
-	/usr/local/Cellar/go/1.12.5/libexec/src/testing/testing.go:916 +0x35a
 exit status 2
-FAIL	github.com/shaojintian/gsweat/core	0.409s
+FAIL	github.com/shaojintian/gsweat/core	0.442s
